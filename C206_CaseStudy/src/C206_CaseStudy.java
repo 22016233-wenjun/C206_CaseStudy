@@ -13,7 +13,7 @@ public class C206_CaseStudy {
 	private static final int option_reqistration = 6;
 	private static final int option_quit = 7;
 	
-//test//
+//
 	
 	
 	public static void main(String[] args) {
