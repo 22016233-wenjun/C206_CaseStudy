@@ -19,6 +19,7 @@ public class C206_CaseStudy {
 
 		ArrayList<Biker> bikeList = new ArrayList<Biker>();
 		ArrayList<Event> EventList = new ArrayList<Event>();
+		ArrayList<BikeUser> bikeUserList = new ArrayList<BikeUser>();
 
 		int option = 0;
 
@@ -30,31 +31,29 @@ public class C206_CaseStudy {
 
 			if (option == option_user) {
 				//Add a new bike
-				System.out.println("USER");			
+				System.out.println("\nUSER");			
 				System.out.println("1.Add a new user");
 				System.out.println("2.View all users");
 				System.out.println("3.Delete an existing user");
-
+				
 				int itemType = Helper.readInt("Enter option to select item type > ");
 
 				if (itemType == 1) {
 					//Add
-					C206_CaseStudy.addbike(bikeList);
+					C206_CaseStudy.addUser(bikeUserList);
+					
 				} else if (itemType == 2) {
 					//View
-					C206_CaseStudy.viewbike(bikeList);
+					C206_CaseStudy.viewUser(bikeUserList);
 				}
+				
 				else if (itemType == 3) {
 					//Delete
-					C206_CaseStudy.deletebike(bikeList);
+					C206_CaseStudy.deleteUser(bikeUserList);
+					
 				} else {
 					System.out.println("Invalid type");
 				}
-
-
-
-
-
 
 
 			} else if (option == option_bike) {
@@ -136,6 +135,59 @@ public class C206_CaseStudy {
 	}
 
 	//================================= Option 1  =================================
+	 public static ArrayList<BikeUser> addUser(ArrayList<BikeUser> bikeUserList) {
+	    	String name = Helper.readString("Enter your name > ");
+	    	int age = Helper.readInt("Enter your age > ");
+	    	String email = Helper.readString("Enter your email > ");
+	    	int phoneNo = Helper.readInt("Enter your phone number > ");
+
+	    	BikeUser bu= new BikeUser(name, age, email, phoneNo);
+	    	bikeUserList.add(bu);
+			
+	    	System.out.println("**User has been added***\n");
+	    	
+	    	return bikeUserList;
+	    }
+		
+	    public static void viewUser(ArrayList<BikeUser> bikeUserList) {
+			 String output = "";
+
+			    // Header
+			    output += String.format("%-15s %-15s %-15s %-15s\n", "Name", "Age", "Email", "Phone Number");
+
+			    // Items
+			    for (BikeUser bu : bikeUserList) {
+			        output += String.format("%-15s %-15d %-15s %-15d\n",
+			                bu.getName(),
+			                bu.getAge(),
+			                bu.getEmail(),
+			                bu.getPhoneNo());
+			    }
+
+			    System.out.println(output);
+			}
+
+	    public static void deleteUser(ArrayList<BikeUser> bikeUserList) {
+	    	boolean UserFound = false;
+	    	String userToDelete = Helper.readString("Enter your name > ");
+
+	        for (int bu = 0; bu < bikeUserList.size(); bu++) {
+		        if (bikeUserList.get(bu)!= null && bikeUserList.get(bu).getName().equalsIgnoreCase(userToDelete)){
+		            char confirmDelete = Helper.readChar("Confirm deletion (y/n) > ");
+		            if (confirmDelete == 'y' || confirmDelete == 'Y') {
+		            	bikeUserList.remove(bu);
+		            	System.out.println("User " + userToDelete + " has been deleted!");
+		            	UserFound = true;
+		        } else {
+		            System.out.println("User " + userToDelete + " has not been deleted!\n");
+		        }
+	        }
+	        
+		        if(!UserFound) {
+		        	System.out.println("Error: User " + userToDelete + " not found!");
+		        }
+	        }
+	    }
 
 	//================================= Option 2  =================================//
 

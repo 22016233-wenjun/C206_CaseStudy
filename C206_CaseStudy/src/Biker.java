@@ -1,4 +1,11 @@
-//
+/**
+ * 
+ */
+
+/**
+ * @author kai ling
+ *
+ */
 //completed//
 public class Biker {
     private String model;
