@@ -224,6 +224,7 @@ public static boolean DeleteEventList(ArrayList<Event> EventList) {
 
 	return patientfound;
 	}
+//
 }
 
 
