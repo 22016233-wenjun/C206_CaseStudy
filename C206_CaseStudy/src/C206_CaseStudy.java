@@ -20,7 +20,7 @@ public class C206_CaseStudy {
 		ArrayList<Biker> bikeList = new ArrayList<Biker>();
 		ArrayList<Event> EventList = new ArrayList<Event>();
 		
-
+//
 		int option = 0;
 
 		while (option != option_quit) {
