@@ -12,57 +12,29 @@ public class C206_CaseStudy {
 	private static final int option_event = 5;
 	private static final int option_reqistration = 6;
 	private static final int option_quit = 7;
-	
 
-	
-	
+
+
 	public static void main(String[] args) {
 
 		ArrayList<Biker> bikeList = new ArrayList<Biker>();
 		ArrayList<Event> EventList = new ArrayList<Event>();
-		
-//
+
 		int option = 0;
 
 		while (option != option_quit) {
 
 			C206_CaseStudy.menu();
 			option = Helper.readInt("Enter an option > ");
-			
-			
-		if (option == option_user) {
-			//Add a new bike
-			System.out.println("USER");			
-			System.out.println("1.Add a new user");
-			System.out.println("2.View all users");
-			System.out.println("3.Delete an existing user");
-			
-			int itemType = Helper.readInt("Enter option to select item type > ");
 
-			if (itemType == 1) {
-				//Add
-				C206_CaseStudy.addbike(bikeList);
-			} else if (itemType == 2) {
-				//View
-				C206_CaseStudy.viewbike(bikeList);
-			}
-			else if (itemType == 3) {
-				//Delete
-				C206_CaseStudy.deletebike(bikeList);
-			} else {
-				System.out.println("Invalid type");
-			}
-			
-				
-				
-				
-			} else if (option == option_bike) {
+
+			if (option == option_user) {
 				//Add a new bike
-				System.out.println("BIKE");			
-				System.out.println("1.Add a new bike");
-				System.out.println("2.View all bike");
-				System.out.println("3.Delete an existing bike");
-				
+				System.out.println("USER");			
+				System.out.println("1.Add a new user");
+				System.out.println("2.View all users");
+				System.out.println("3.Delete an existing user");
+
 				int itemType = Helper.readInt("Enter option to select item type > ");
 
 				if (itemType == 1) {
@@ -78,33 +50,66 @@ public class C206_CaseStudy {
 				} else {
 					System.out.println("Invalid type");
 				}
-				
-				
+
+
+
+
+
+
+
+			} else if (option == option_bike) {
+				//Add a new bike
+				Helper.line(75,"=");
+				System.out.println("BIKE");	
+				Helper.line(75,"=");
+				System.out.println("1.Add a new bike");
+				System.out.println("2.View all bike");
+				System.out.println("3.Delete an existing bike");
+				Helper.line(75,"=");
+
+				int itemType = Helper.readInt("Enter option to select item type > ");
+
+				if (itemType == 1) {
+					//Add
+					C206_CaseStudy.addbike(bikeList);
+				} else if (itemType == 2) {
+					//View
+					C206_CaseStudy.viewbike(bikeList);
+				}
+				else if (itemType == 3) {
+					//Delete
+					C206_CaseStudy.deletebike(bikeList);
+				} else {
+					System.out.println("Invalid type");
+				}
+
+
+
 			}else if (option == option_event) {
-					//Add a new bike
-					System.out.println("Event");			
-					System.out.println("1.Add a new event");
-					System.out.println("2.View all events");
-					System.out.println("3.Delete an existing event");
-					
-					int itemType = Helper.readInt("Enter option to select item type > ");
+				//Add a new bike
+				System.out.println("Event");   
+				System.out.println("1.Add a new event");
+				System.out.println("2.View all events");
+				System.out.println("3.Delete an existing event");
 
-					if (itemType == 1) {
-						//Add
-						C206_CaseStudy.addEvent(EventList);
-					} else if (itemType == 2) {
-						//View
-						 C206_CaseStudy.displayEventList(EventList);
-					}
-					else if (itemType == 3) {
-								//View
-						C206_CaseStudy.DeleteEventList(EventList);
+				int itemType = Helper.readInt("Enter option to select item type > ");
 
-					
-					
-					}
-				
-		
+				if (itemType == 1) {
+					//Add
+					C206_CaseStudy.addEvent(EventList);
+				} else if (itemType == 2) {
+					//View
+					C206_CaseStudy.displayEventList(EventList);
+				}
+				else if (itemType == 3) {
+					//View
+					C206_CaseStudy.DeleteEventList(EventList);
+
+
+
+				}
+
+
 
 			} else if (option == option_quit) {
 				System.out.println("Bye!");
@@ -116,116 +121,181 @@ public class C206_CaseStudy {
 
 	}
 
-    public static void menu() {
-    	System.out.println("Bikers Community Portal");
-    	System.out.println("-------------------------");
-        System.out.println("1: User");
-        System.out.println("2: Bike");
-        System.out.println("3: Group");
-        System.out.println("4: Discussion");
-        System.out.println("5: Event");
-        System.out.println("6: Registration");
-        System.out.println("7: Quit");
+	public static void menu() {
+		Helper.line(75,"-");
+		System.out.println("Bikers Community Portal");
+		Helper.line(75,"-");
+		System.out.println("1: User");
+		System.out.println("2: Bike");
+		System.out.println("3: Group");
+		System.out.println("4: Discussion");
+		System.out.println("5: Event");
+		System.out.println("6: Registration");
+		System.out.println("7: Quit");
 
-    }
-    
+	}
+
 	//================================= Option 1  =================================
 
-	//================================= Option 2  =================================
-	
-	public static String addbike(ArrayList<Biker> bikeList) {
-		String output = "";
+	//================================= Option 2  =================================//
 
-			
-		return output;
+	public static ArrayList<Biker> addbike(ArrayList<Biker> bikeList) {
+
+		//asking the questions of the bike
+		String model = Helper.readString("Enter bike model>");
+		String description= Helper.readString("Enter description >");
+		String color = Helper.readString("Enter color>");
+		double price = Helper.readDouble("Enter price >$");
+
+		Biker newbike = new Biker(model, description, color, price);
+
+		bikeList.add(newbike);
+
+		System.out.println("\n*** Bike has been added ***");
+
+		return bikeList;
 	}
-	
+
+
+
+
 	public static void viewbike(ArrayList<Biker> bikeList) {
-		System.out.println("i like coding");
-	}
-	public static void deletebike(ArrayList<Biker> bikeList) {
-			
-	}
-	
-	
 
-	//================================= Option 5  =================================
+		//Header
+		Helper.line(75,"=");
+		System.out.println(String.format("%-10s %-30s %-15s %s","Model","Description","Color","Price"));
+		Helper.line(75,"=");
+
+		//information and amount
+		for (int i = 0; i< bikeList.size(); i++ ) {
+			System.out.println(String.format("%-10s %-30s %-15s $%.2f",bikeList.get(i).getModel(),bikeList.get(i).getDescription(),bikeList.get(i).getColor(),bikeList.get(i).getPrice()));		
+
+		}
+		Helper.line(75,"-");
+	}
+	public static boolean deletebike(ArrayList<Biker> bikeList) {
+		boolean bikeFound = false;
+
+		// Display the list of bikes
+		System.out.println("List of Bikes:");
+		System.out.println(String.format("%-10s %-30s %-15s %s","Model","Description","Color","Price"));
+		Helper.line(75,"=");
+
+		for (Biker biker : bikeList) {
+			System.out.println(String.format("%-10s %-30s %-15s $%.2f",
+					biker.getModel(),
+					biker.getDescription(),
+					biker.getColor(),
+					biker.getPrice()));
+		}
+
+		String removeBike = Helper.readString("\nEnter the bike model to delete > ");
+
+		for (int r = 0; r < bikeList.size(); r++) {
+			if (bikeList.get(r) != null && bikeList.get(r).getModel().equalsIgnoreCase(removeBike)) {
+				char confirmDelete = Helper.readChar("Confirm deletion (y/n) > ");
+				if (confirmDelete == 'y' || confirmDelete == 'Y') {
+					bikeList.remove(r);
+					System.out.println("\n*** Bike has been deleted ***");
+					bikeFound = true;
+				} else {
+					System.out.println("\n*** Deletion canceled ***");
+				}
+			}
+		}
+
+		if (!bikeFound) {
+			System.out.println("\n*** Bike not found ***");
+		}
+
+		return bikeFound;
+	}
 	
+	
+	
+	//================================= Option 5  =================================//
+
+
+
 	public static void  displayEventList(ArrayList<Event> EventList) {
 
 
 		//-------------------
 		Helper.line(75, "-");
 		String output ="";
-		output += String.format("%-15s %-25s %-15s %s\n","Event Name","Description","Date","Time");
+		output += String.format("%-10s %-25s %-15s %s\n","Event Name","Description","Date","Time");
 		for(int i = 0; i < EventList.size();i++ ) {
 			output += String.format("%-10s %-25s %-15s %s",EventList.get(i).getName(),EventList.get(i).getDescription(),EventList.get(i).getDate(),EventList.get(i).gettime());
-			
+
 		}
 		System.out.println(output);
 		Helper.line(75, "-");
 		//-------------------
 
 	}
-public static void addEvent(ArrayList<Event> EventList) {
+	public static void addEvent(ArrayList<Event> EventList) {
 
-	//-------------------
-	String Name = Helper.readString("Enter event Name > ");
-	String description = Helper.readString("Enter description > ");
-	String Date = Helper.readString("Enter date of event> ");
-	String Time = Helper.readString("Enter time of event > ");
+		//-------------------
+		String Name = Helper.readString("Enter event Name > ");
+		String description = Helper.readString("Enter description > ");
+		String Date = Helper.readString("Enter date of event> ");
+		String Time = Helper.readString("Enter time of event > ");
 
-	LocalDate date = LocalDate.parse(Date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-    LocalTime time = LocalTime.parse(Time, DateTimeFormatter.ofPattern("HH:mm"));
+		LocalDate date = LocalDate.parse(Date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		LocalTime time = LocalTime.parse(Time, DateTimeFormatter.ofPattern("HH:mm"));
 
-	System.out.println(" ");
-	
-	EventList.add(new Event(Name, description, Date,Time ));
-	
-	System.out.println(" ");
-	
-	System.out.println("*** Event has been added *** ");
-	//-------------------
+		System.out.println(" ");
 
-}
-public static boolean DeleteEventList(ArrayList<Event> EventList) {
+		EventList.add(new Event(Name, description,Date,Time ));
 
-	boolean patientfound = false;
+		System.out.println(" ");
 
-	//-------------------
-	
-	Helper.line(75, "-");
-	String output ="";
-	output += String.format("%-15s %-25s %-15s %s\n","Event Name","Description","Date","Time");
-	for(int i = 0; i < EventList.size();i++ ) {
-		output += String.format("%-10s %-30s %-15s %s",EventList.get(i).getName(),EventList.get(i).getDescription(),EventList.get(i).getDate(),EventList.get(i).gettime());
-		
+		System.out.println("* Event has been added * ");
+		//-------------------
+
 	}
-	System.out.println(output);
-	Helper.line(75, "-");
-	//-------------------
+	public static boolean DeleteEventList(ArrayList<Event> EventList) {
 
-	String EName = Helper.readString("Enter Event name > ");
-	for(int i = 0; i < EventList.size(); i++ ) {
-		if(EventList.get(i).getName().equalsIgnoreCase(EName)){
-			patientfound = true;
-			String cfm = Helper.readString("Confirm deletion (y/n) > ");
-			if(cfm.equals("y")) {
-				EventList.remove(i);
-				
-				System.out.println(" ");
-				System.out.println("*** Event has been deleted *** ");
-			
-			}
-			else {
-				
+		boolean patientfound = false;
+
+		//-------------------
+
+		Helper.line(75, "-");
+		String output ="";
+		output += String.format("%-15s %-25s %-15s %s\n","Event Name","Description","Date","Time");
+		for(int i = 0; i < EventList.size();i++ ) {
+			output += String.format("%-15s %-25s %-15s %s",EventList.get(i).getName(),EventList.get(i).getDescription(),EventList.get(i).getDate(),EventList.get(i).gettime());
+
+		}
+		System.out.println(output);
+		Helper.line(75, "-");
+		//-------------------
+
+		String EName = Helper.readString("Enter Event name > ");
+		for(int i = 0; i < EventList.size(); i++ ) {
+			if(EventList.get(i).getName().equalsIgnoreCase(EName)){
+				patientfound = true;
+				String cfm = Helper.readString("Confirm deletion (y/n) > ");
+				if(cfm.equals("y")) {
+					EventList.remove(i);
+
+					System.out.println(" ");
+					System.out.println("* Event has been deleted * ");
+
+				}
+				else {
+
+				}
 			}
 		}
-	}
 
-	return patientfound;
+		return patientfound;
 	}
-//
+	////
 }
+
+
+
+
 
 
