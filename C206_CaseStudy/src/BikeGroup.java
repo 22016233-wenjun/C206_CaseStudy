@@ -19,7 +19,7 @@ public class BikeGroup {
         this.members = new ArrayList<>();
     }
 
-    // Getter and setter methods
+    // Getter and setter methods//
 
     public BikeGroup(String groupName, Object name2) {
 		// TODO Auto-generated constructor stub
