@@ -2,86 +2,124 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class C206_CaseStudy {
-    private static final int OPTION_QUIT = 5;
+	private static final int option_user = 1;
+	private static final int option_bike = 2;
+	private static final int option_group = 3;
+	private static final int option_discussion = 4;
+	private static final int option_event = 5;
+	private static final int option_reqistration = 6;
+	private static final int option_quit = 7;
+	
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int option = 0;
+	
+	public static void main(String[] args) {
 
-        while (option != OPTION_QUIT) {
-            C206_CaseStudy.menu();
-            option = sc.nextInt();
+		ArrayList<Biker> bikeList = new ArrayList<Biker>();
 
-            switch (option) {
-                case 1:
-                    // Add Biker
-                    System.out.println("Enter Biker Name: ");
-                    String bikerName = sc.next();
-                    System.out.println("Enter Biker Email: ");
-                    String bikerEmail = sc.next();
-                    Helper.addBiker(new Biker(bikerName, bikerEmail));
-                    break;
+		int option = 0;
 
-                case 2:
-                    // Add Bike Group
-                    System.out.println("Enter Bike Group Name: ");
-                    String groupName = sc.next();
-                    Helper.addGroup(new BikeGroup(groupName, new ArrayList<>()));
-                    break;
+		while (option != option_quit) {
 
-                case 3:
-                    // Add Event
-                    System.out.println("Enter Event Name: ");
-                    String eventName = sc.next();
-                    System.out.println("Enter Event Date: ");
-                    String eventDate = sc.next();
-                    Helper.addEvent(new Event(eventName, eventDate));
-                    break;
+			C206_CaseStudy.menu();
+			option = Helper.readInt("Enter an option > ");
+			
+			
+		if (option == option_user) {
+			//Add a new bike
+			System.out.println("USER");			
+			System.out.println("1.Add a new user");
+			System.out.println("2.View all users");
+			System.out.println("3.Delete an existing user");
+			
+			int itemType = Helper.readInt("Enter option to select item type > ");
 
-                case 4:
-                    // View Lists
-                    System.out.println("Bikers: " + Helper.getBikerList());
-                    System.out.println("Bike Groups: " + Helper.getGroupList());
-                    System.out.println("Events: " + Helper.getEventList());
-                    break;
+			if (itemType == 1) {
+				//Add
+				C206_CaseStudy.addbike(bikeList);
+			} else if (itemType == 2) {
+				//View
+				C206_CaseStudy.viewbike(bikeList);
+			}
+			else if (itemType == 3) {
+				//Delete
+				C206_CaseStudy.deletebike(bikeList);
+			} else {
+				System.out.println("Invalid type");
+			}
+			
+			
+			
+				
+				
+				
+				
+			} else if (option == option_bike) {
+				//Add a new bike
+				System.out.println("BIKE");			
+				System.out.println("1.Add a new bike");
+				System.out.println("2.View all bike");
+				System.out.println("3.Delete an existing bike");
+				
+				int itemType = Helper.readInt("Enter option to select item type > ");
 
-                case 5:
-                    // Delete Biker
-                    System.out.println("Enter Biker Name to Delete: ");
-                    String deleteBikerName = sc.next();
-                    Helper.deleteBiker(deleteBikerName);
-                    break;
+				if (itemType == 1) {
+					//Add
+					C206_CaseStudy.addbike(bikeList);
+				} else if (itemType == 2) {
+					//View
+					C206_CaseStudy.viewbike(bikeList);
+				}
+				else if (itemType == 3) {
+					//Delete
+					C206_CaseStudy.deletebike(bikeList);
+				} else {
+					System.out.println("Invalid type");
+				}
+				
+				
+				
+				
+		
 
-                case 6:
-                    // Delete Bike Group
-                    System.out.println("Enter Bike Group Name to Delete: ");
-                    String deleteGroupName = sc.next();
-                    Helper.deleteGroup(deleteGroupName);
-                    break;
+			} else if (option == option_quit) {
+				System.out.println("Bye!");
+			} else {
+				System.out.println("Invalid option");
+			}
 
-                case 7:
-                    // Delete Event
-                    System.out.println("Enter Event Name to Delete: ");
-                    String deleteEventName = sc.next();
-                    Helper.deleteEvent(deleteEventName);
-                    break;
+		}
 
-                case 8: OPTION_QUIT:
-                    System.out.println("Bye!");
-                    break;
-            }
-        }
-    }
+	}
 
     public static void menu() {
-        System.out.println("1: Add Biker");
-        System.out.println("2: Add Bike Group");
-        System.out.println("3: Add Event");
-        System.out.println("4: View Lists");
-        System.out.println("5: Delete Biker");
-        System.out.println("6: Delete Bike Group");
-        System.out.println("7: Delete Event");
-        System.out.println("8: Quit");
-        System.out.println("Enter an option:");
+    	System.out.println("Bikers Community Portal");
+    	System.out.println("-------------------------");
+        System.out.println("1: User");
+        System.out.println("2: Bike");
+        System.out.println("3: Group");
+        System.out.println("4: Discussion");
+        System.out.println("5: Event");
+        System.out.println("6: Registration");
+        System.out.println("7: Quit");
+
     }
+    
+	//================================= Option 1  =================================
+
+	//================================= Option 2  =================================
+	
+	public static String addbike(ArrayList<Biker> bikeList) {
+		String output = "";
+
+			
+		return output;
+	}
+	
+	public static void viewbike(ArrayList<Biker> bikeList) {
+		System.out.println("i like coding");
+	}
+	public static void deletebike(ArrayList<Biker> bikeList) {
+			
+	}
+
 }

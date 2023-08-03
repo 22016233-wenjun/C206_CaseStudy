@@ -1,68 +1,47 @@
-/**
- * 
- */
 
-/**
- * @author wenju
- *
- */
-import java.util.ArrayList;
-
+//completed
 public class Biker {
-    private String id;
-    private String name;
-    private ArrayList<BikeGroup> groups;
-    private ArrayList<Event> events;
+    private String model;
+    private String description;
+    private String color;
+    private double price;
 
-    public Biker(String id, String name) {
-        this.id = id;
-        this.name = name;
-        this.groups = new ArrayList<>();
-        this.events = new ArrayList<>();
+    public Biker(String model, String description, String color, double price) {
+        this.model = model;
+        this.description = description;
+        this.color = color;
+        this.price = price;
     }
 
-    public String getId() {
-        return id;
+    public String getModel() {
+        return model;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setModel(String model) {
+        this.model = model;
     }
 
-    public String getName() {
-        return name;
+    public String getDescription() {
+        return description;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    public String getColor() {
+        return color;
     }
 
-    public ArrayList<BikeGroup> getGroups() {
-        return groups;
+    public void setColor(String color) {
+        this.color = color;
+    }
+    public double getPrice() {
+    	return price;
+    }
+    public void setPrice(double price) {
+    	this.price = price;
     }
 
-    public void setGroups(ArrayList<BikeGroup> groups) {
-        this.groups = groups;
-    }
-
-    public ArrayList<Event> getEvents() {
-        this.events = events;
-    }
-
-    public void addGroup(BikeGroup group) {
-        this.groups.add(group);
-    }
-
-    public void removeGroup(BikeGroup group) {
-        this.groups.remove(group);
-    }
-
-    public void addEvent(Event event) {
-        this.events.add(event);
-    }
-
-    public void removeEvent(Event event) {
-        this.events.remove(event);
-    }
 }
+
 
