@@ -1,4 +1,7 @@
 import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class C206_CaseStudy {
@@ -15,6 +18,8 @@ public class C206_CaseStudy {
 	public static void main(String[] args) {
 
 		ArrayList<Biker> bikeList = new ArrayList<Biker>();
+		ArrayList<Event> EventList = new ArrayList<Event>();
+		
 
 		int option = 0;
 
@@ -47,9 +52,6 @@ public class C206_CaseStudy {
 				System.out.println("Invalid type");
 			}
 			
-			
-			
-				
 				
 				
 				
@@ -77,7 +79,29 @@ public class C206_CaseStudy {
 				}
 				
 				
-				
+			}else if (option == option_event) {
+					//Add a new bike
+					System.out.println("Event");			
+					System.out.println("1.Add a new event");
+					System.out.println("2.View all events");
+					System.out.println("3.Delete an existing event");
+					
+					int itemType = Helper.readInt("Enter option to select item type > ");
+
+					if (itemType == 1) {
+						//Add
+						C206_CaseStudy.addEvent(EventList);
+					} else if (itemType == 2) {
+						//View
+						 C206_CaseStudy.displayEventList(EventList);
+					}
+					else if (itemType == 3) {
+								//View
+						C206_CaseStudy.DeleteEventList(EventList);
+
+					
+					
+					}
 				
 		
 
@@ -121,5 +145,85 @@ public class C206_CaseStudy {
 	public static void deletebike(ArrayList<Biker> bikeList) {
 			
 	}
+	
+	
+
+	//================================= Option 5  =================================
+	
+	public static void  displayEventList(ArrayList<Event> EventList) {
+
+
+		//-------------------
+		Helper.line(75, "-");
+		String output ="";
+		output += String.format("%-15s %-25s %-15s %s\n","Event Name","Description","Date","Time");
+		for(int i = 0; i < EventList.size();i++ ) {
+			output += String.format("%-10s %-25s %-15s %s",EventList.get(i).getName(),EventList.get(i).getDescription(),EventList.get(i).getDate(),EventList.get(i).gettime());
+			
+		}
+		System.out.println(output);
+		Helper.line(75, "-");
+		//-------------------
+
+	}
+public static void addEvent(ArrayList<Event> EventList) {
+
+	//-------------------
+	String Name = Helper.readString("Enter event Name > ");
+	String description = Helper.readString("Enter description > ");
+	String Date = Helper.readString("Enter date of event> ");
+	String Time = Helper.readString("Enter time of event > ");
+
+	LocalDate date = LocalDate.parse(Date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+    LocalTime time = LocalTime.parse(Time, DateTimeFormatter.ofPattern("HH:mm"));
+
+	System.out.println(" ");
+	
+	EventList.add(new Event(Name, description, Date,Time ));
+	
+	System.out.println(" ");
+	
+	System.out.println("*** Event has been added *** ");
+	//-------------------
 
 }
+public static boolean DeleteEventList(ArrayList<Event> EventList) {
+
+	boolean patientfound = false;
+
+	//-------------------
+	
+	Helper.line(75, "-");
+	String output ="";
+	output += String.format("%-15s %-25s %-15s %s\n","Event Name","Description","Date","Time");
+	for(int i = 0; i < EventList.size();i++ ) {
+		output += String.format("%-10s %-30s %-15s %s",EventList.get(i).getName(),EventList.get(i).getDescription(),EventList.get(i).getDate(),EventList.get(i).gettime());
+		
+	}
+	System.out.println(output);
+	Helper.line(75, "-");
+	//-------------------
+
+	String EName = Helper.readString("Enter Event name > ");
+	for(int i = 0; i < EventList.size(); i++ ) {
+		if(EventList.get(i).getName().equalsIgnoreCase(EName)){
+			patientfound = true;
+			String cfm = Helper.readString("Confirm deletion (y/n) > ");
+			if(cfm.equals("y")) {
+				EventList.remove(i);
+				
+				System.out.println(" ");
+				System.out.println("*** Event has been deleted *** ");
+			
+			}
+			else {
+				
+			}
+		}
+	}
+
+	return patientfound;
+	}
+}
+
+

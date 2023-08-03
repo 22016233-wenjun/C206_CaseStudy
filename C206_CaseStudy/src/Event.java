@@ -1,44 +1,48 @@
 
-import java.util.ArrayList;
 
 public class Event {
-    private String id;
-    private String name;
-    private ArrayList<Biker> participants;
+    private String Name;
+    private String description;
+    private String Date;
+    private String time;
 
-    public Event(String id, String name) {
-        this.id = id;
-        this.name = name;
-        this.participants = new ArrayList<>();
-    }
-
-    // Getter and setter methods
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+    public Event(String Name, String description, String Date, String time) {
+        this.Name = Name;
+        this.description = description;
+        this.Date = Date;
+        this.time = time;
     }
 
     public String getName() {
-        return name;
+        return Name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String Name) {
+        this.Name = Name;
     }
 
-    public ArrayList<Biker> getParticipants() {
-        return participants;
+    public String getDescription() {
+        return description;
     }
 
-    public void addParticipant(Biker biker) {
-        this.participants.add(biker);
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    public String getDate() {
+        return Date;
     }
 
-    public void removeParticipant(Biker biker) {
-        this.participants.remove(biker);
+    public void setDate(String Date) {
+        this.Date = Date;
     }
+    public String gettime() {
+    	return time;
+    }
+    public void settime(String time) {
+    	this.time = time;
+    }
+
+
 }
+
+
