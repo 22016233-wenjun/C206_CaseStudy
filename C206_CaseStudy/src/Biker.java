@@ -20,7 +20,7 @@ public class Biker {
         this.price = price;
     }
 
-    public String getModel() {
+	public String getModel() {
         return model;
     }
 

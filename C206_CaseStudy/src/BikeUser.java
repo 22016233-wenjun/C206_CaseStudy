@@ -20,7 +20,7 @@ public class BikeUser {
         this.phoneNo = phoneNo;
     }
 
-    public String getName() {
+	public String getName() {
 		return name;
 	}
 
@@ -50,6 +50,11 @@ public class BikeUser {
 
 	public void setPhoneNo(int phoneNo) {
 		this.phoneNo = phoneNo;
+	}
+
+	public static void add(String mname) {
+		// TODO Auto-generated method stub
+		
 	}
 }
 

@@ -18,9 +18,10 @@ public class C206_CaseStudy {
 	public static void main(String[] args) {
 
 		ArrayList<Biker> bikeList = new ArrayList<Biker>();
+		ArrayList<BikeGroup> groupList = new ArrayList<BikeGroup>();
 		ArrayList<Event> EventList = new ArrayList<Event>();
 		ArrayList<BikeUser> bikeUserList = new ArrayList<BikeUser>();
-
+		
 		int option = 0;
 
 		while (option != option_quit) {
@@ -83,7 +84,29 @@ public class C206_CaseStudy {
 				}
 
 
+			} else if (option == option_group) {
+				// Add a new group
+				System.out.println("\nGROUP");
+				Helper.line(30, "-");
+				System.out.println("1. Add a new group");
+				System.out.println("2. View all groups");
+				System.out.println("3. Delete an existing group");
 
+				int itemType = Helper.readInt("\nEnter option to select item type > ");
+
+				if (itemType == 1) {
+					// Add
+					C206_CaseStudy.addgroup(groupList);
+				} else if (itemType == 2) {
+					// View
+					C206_CaseStudy.viewgroup(groupList);
+				} else if (itemType == 3) {
+					// Delete
+					C206_CaseStudy.deletegroup(groupList);
+				} else {
+					System.out.println("Invalid type");
+				}
+				
 			}else if (option == option_event) {
 				//Add a new bike
 				System.out.println("Event");   
@@ -263,7 +286,69 @@ public class C206_CaseStudy {
 		return bikeFound;
 	}
 	
+	//================================= Option 3  =================================//
 	
+	public static ArrayList<BikeGroup> addgroup(ArrayList<BikeGroup> groupList) {
+		
+		int id = Helper.readInt("Enter group id > ");
+		String name = Helper.readString("Enter group name > ");
+		
+		BikeGroup newgroup = new BikeGroup(id, name);
+		groupList.add(newgroup);
+		
+		System.out.println("\n*** A New Group has been added ***");
+
+		return groupList;
+	}
+	
+	public static void viewgroup(ArrayList<BikeGroup> groupList) {
+
+		//Title
+		Helper.line(75,"=");
+		System.out.println(String.format("%-10s %-30s","ID","GROUP NAME"));
+		Helper.line(75,"=");
+
+		//list details
+		for (int i = 0; i< groupList.size(); i++ ) {
+			System.out.println(String.format("%-10d %-30s", groupList.get(i).getId(), groupList.get(i).getName()));		
+
+		}
+	}
+	
+	public static boolean deletegroup(ArrayList<BikeGroup> groupList) {
+		boolean groupFound = false;
+
+		// Display the list of groups
+		System.out.println("List of Groups:");
+		System.out.println(String.format("%-10s %-30s","ID","GROUP NAME"));
+		Helper.line(75,"=");
+
+		for (BikeGroup group : groupList) {
+			System.out.println(String.format("%-10d %-30s",
+					group.getId(), group.getName()));
+		}
+
+		String removeGroup = Helper.readString("\nEnter the bike group to delete > ");
+
+		for (int i = 0; i < groupList.size(); i++) {
+			if (groupList.get(i) != null && groupList.get(i).getName().equals(removeGroup)) {
+				char confirmDelete = Helper.readChar("Confirm deletion (y/n) > ");
+				if (confirmDelete == 'y' || confirmDelete == 'Y') {
+					groupList.remove(i);
+					System.out.println("\n*** Group has been deleted ***");
+					groupFound = true;
+				} else {
+					System.out.println("\n*** Group is not deleted ***");
+				}
+			}
+		}
+
+		if (!groupFound) {
+			System.out.println("\n*** Group not found ***");
+		}
+
+		return groupFound;
+	}
 	
 	//================================= Option 5  =================================//
 
