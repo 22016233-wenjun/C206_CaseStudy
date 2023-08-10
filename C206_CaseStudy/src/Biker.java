@@ -58,6 +58,6 @@ public class Biker {
     	this.price = price;
     }
 
-}
+}//
 
 

@@ -647,7 +647,7 @@ public class C206_CaseStudy {
 
     public static void deleteRegistration(ArrayList<Registration> registrationList) {
         System.out.println("DELETE REGISTRATION");
-
+//
         // Check if there are any registrations in the list
         if (registrationList.isEmpty()) {
             System.out.println("No registrations found.");
