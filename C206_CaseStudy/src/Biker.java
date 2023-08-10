@@ -10,12 +10,14 @@
 public class Biker {
     private String model;
     private String description;
+    private String licenseno;
     private String color;
     private double price;
 
-    public Biker(String model, String description, String color, double price) {
+    public Biker(String model, String description, String licenseno, String color, double price) {
         this.model = model;
         this.description = description;
+        this.licenseno = licenseno;
         this.color = color;
         this.price = price;
     }
@@ -34,6 +36,13 @@ public class Biker {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+    public String getlicenseno() {
+        return licenseno;
+    }
+
+    public void setlicenseno(String licenseno) {
+        this.licenseno = licenseno;
     }
     public String getColor() {
         return color;

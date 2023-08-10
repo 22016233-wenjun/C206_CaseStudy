@@ -1,15 +1,3 @@
-/**
- * 
- */
-
-/**
-// * @author Matthew//
- *
- *
- */
-//
-
-
 public class BikeGroup {
     private int id;
     private String name;
