@@ -10,20 +10,43 @@ import static org.junit.Assert.assertTrue;
 
 public class C206_CaseStudyTest {
 
+	private static ArrayList<BikeUser> testUserList;
     private static ArrayList<Biker> testBikeList;
     private static ArrayList<BikeGroup> testGroupList;
     private static ArrayList<Discussion> testDiscussionList;
     private static ArrayList<Event> testEventList;
     private static ArrayList<Registration> testRegistrationList;
 
+
     @Before
     public void setUp() throws Exception {
+    	testUserList = new ArrayList<>();
         testBikeList = new ArrayList<>();
         testGroupList = new ArrayList<>();
         testDiscussionList = new ArrayList<>();
         testEventList = new ArrayList<>();
         testRegistrationList = new ArrayList<>();
     }
+    
+    @Test
+    public void testAddUser() {
+        BikeUser user = new BikeUser("John Doe", 25, "john@example.com", 12345678);
+        C206_CaseStudy.addUser(testUserList, user);
+        assertEquals(1, testUserList.size()); 
+        assertEquals("username1", testUserList.get(0).getName());
+    }
+
+   
+   
+
+    @Test
+    public void testAddRegistration() {
+        Registration registration = new Registration("John Doe", "john@example.com", "12345678");
+        C206_CaseStudy.addRegistration(testRegistrationList, registration);
+        assertEquals(1, testRegistrationList.size()); 
+        assertEquals("John Doe", testRegistrationList.get(0).getName());
+    }
+
 
     @Test
     public void testAddBike() {
@@ -51,9 +74,11 @@ public class C206_CaseStudyTest {
 
     @Test
     public void testAddGroup() {
-        // TODO: Similarly, add tests for addGroup, ensuring groups are added correctly.
+        BikeGroup group = new BikeGroup(1234, "groupDesc1");
+        C206_CaseStudy.addGroup(testGroupList, group);
+        assertEquals(1, testGroupList.size()); 
+        assertEquals("groupName1", testGroupList.get(0).getName());
     }
-
     @Test
     public void testAddDiscussion() {
         // given
@@ -74,8 +99,5 @@ public class C206_CaseStudyTest {
         assertEquals("event1", testEventList.get(0).getName());
     }
 
-    @Test
-    public void testAddRegistration() {
-        // TODO: Similarly, add tests for addRegistration, ensuring registrations are added correctly.
-    }
+   
 }

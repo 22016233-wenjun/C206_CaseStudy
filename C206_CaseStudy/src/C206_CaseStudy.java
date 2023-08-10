@@ -45,7 +45,7 @@ public class C206_CaseStudy {
 
 				if (itemType == 1) {
 					//Add
-					C206_CaseStudy.addUser(bikeUserList);
+					C206_CaseStudy.addUser(bikeUserList, null);
 					
 				} else if (itemType == 2) {
 					//View
@@ -167,7 +167,7 @@ public class C206_CaseStudy {
 
 	                if (itemTypes == 1) {
 	                    // Add a new registration
-	                    C206_CaseStudy.addRegistration(registrationList);
+	                    C206_CaseStudy.addRegistration(registrationList, null);
 	                } else if (itemTypes == 2) {
 	                    // View all registrations
 	                    C206_CaseStudy.viewAllRegistrations(registrationList);
@@ -188,9 +188,6 @@ public class C206_CaseStudy {
 			}
 		}
 
-		
-
-	
 
 	public static void menu() {
 		Helper.line(75,"-");
@@ -207,7 +204,7 @@ public class C206_CaseStudy {
 	}
 
 	//================================= Option 1  =================================
-	public static ArrayList<BikeUser> addUser(ArrayList<BikeUser> bikeUserList) { 
+	static void addUser(ArrayList<BikeUser> bikeUserList, BikeUser user) {
 	    String name = getValidName(); 
 	    int age = getValidAge(); 
 	    String email = getValidEmail(); 
@@ -218,7 +215,7 @@ public class C206_CaseStudy {
 	 
 	    System.out.println("**User has been added***\n"); 
 	 
-	    return bikeUserList; 
+	    return; 
 	} 
 	 
 		public static String getValidName() { 
@@ -392,8 +389,8 @@ public class C206_CaseStudy {
 	}
 	
 	//================================= Option 3  =================================//
-	
-	public static ArrayList<BikeGroup> addgroup(ArrayList<BikeGroup> groupList) {
+	public static void addGroup(ArrayList<BikeGroup> groupList, BikeGroup group) {
+		
 		
 		int id = Helper.readInt("Enter group id > ");
 		String name = Helper.readString("Enter group name > ");
@@ -403,7 +400,7 @@ public class C206_CaseStudy {
 		
 		System.out.println("\n*** A New Group has been added ***");
 
-		return groupList;
+		return;
 	}
 	
 	public static void viewgroup(ArrayList<BikeGroup> groupList) {
@@ -612,7 +609,7 @@ public class C206_CaseStudy {
 	
 	//================================= Option 6  =================================
 
-    public static void addRegistration(ArrayList<Registration> registrationList) {
+	static void addRegistration(ArrayList<Registration> registrationList, Registration registration) {
         System.out.println("ADD REGISTRATION");
 
         // Get user input
@@ -675,6 +672,15 @@ public class C206_CaseStudy {
         Registration deletedRegistration = registrationList.remove(selectedRegistration - 1);
         System.out.println("Registration for " + deletedRegistration.getName() + " deleted successfully!");
     }
+
+
+	
+
+
+
+
+
+	
 	
 }
 
