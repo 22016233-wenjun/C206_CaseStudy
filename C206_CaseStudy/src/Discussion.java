@@ -1,6 +1,6 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
-//
+
 public class Discussion {
     private int id;
     private String title;

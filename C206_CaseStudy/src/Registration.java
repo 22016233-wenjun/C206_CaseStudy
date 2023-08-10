@@ -1,9 +1,9 @@
 public class Registration {
   private String name;
     private String email;
-    private String contactNumber;
+    private int contactNumber;
 
-    public Registration(String name, String email, String contactNumber) {
+    public Registration(String name, String email, int contactNumber) {
         this.name = name;
         this.email = email;
         this.contactNumber = contactNumber;
@@ -18,7 +18,7 @@ public class Registration {
         return email;
     }
 
-    public String getContactNumber() {
+    public int getContactNumber() {
         return contactNumber;
     }
 
@@ -31,8 +31,7 @@ public class Registration {
         this.email = email;
     }
 
-    public void setContactNumber(String contactNumber) {
+    public void setContactNumber(int contactNumber) {
         this.contactNumber = contactNumber;
     }
 }
-//

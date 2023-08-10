@@ -189,6 +189,12 @@ public class C206_CaseStudy {
 		}
 
 
+	private static void addgroup(ArrayList<BikeGroup> groupList) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 	public static void menu() {
 		Helper.line(75,"-");
 		System.out.println("Bikers Community Portal");
@@ -615,7 +621,7 @@ public class C206_CaseStudy {
         // Get user input
         String name = Helper.readString("Enter participant's name: ");
         String email = Helper.readString("Enter participant's email: ");
-        String contactNumber = Helper.readString("Enter participant's contact number: ");
+        int contactNumber = Helper.readInt("Enter participant's contact number: ");
 
         // Create and add the registration to the list
         Registration newRegistration = new Registration(name, email, contactNumber);

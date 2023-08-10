@@ -30,39 +30,36 @@ public class C206_CaseStudyTest {
     
     @Test
     public void testAddUser() {
-        BikeUser user = new BikeUser("John Doe", 25, "john@example.com", 12345678);
+        BikeUser user = new BikeUser("Amy", 25, "amy1234@gmail.com",12345678);
         C206_CaseStudy.addUser(testUserList, user);
         assertEquals(1, testUserList.size()); 
-        assertEquals("username1", testUserList.get(0).getName());
+        assertEquals("Amy", testUserList.get(0).getName());
     }
-
-   
-   
 
     @Test
     public void testAddRegistration() {
-        Registration registration = new Registration("John Doe", "john@example.com", "12345678");
+        Registration registration = new Registration("Amy", "amy1234@gmail.com", 12345678);
         C206_CaseStudy.addRegistration(testRegistrationList, registration);
         assertEquals(1, testRegistrationList.size()); 
-        assertEquals("John Doe", testRegistrationList.get(0).getName());
+        assertEquals("Amy", testRegistrationList.get(0).getName());
     }
 
 
     @Test
     public void testAddBike() {
         // given
-        Biker biker = new Biker("model1", "desc1", "license1", "red", 1000);
+        Biker biker = new Biker("VMAX", "Yamaha", "FXB7810A", "black", 18000);
         testBikeList.add(biker);
         
         // then
         assertEquals(1, testBikeList.size());
-        assertEquals("model1", testBikeList.get(0).getModel());
+        assertEquals("VMAX", testBikeList.get(0).getModel());
     }
 
     @Test
     public void testDeleteBike() {
         // given
-        Biker biker = new Biker("model1", "desc1", "license1", "red", 1000);
+        Biker biker = new Biker("VMAX", "Yamaha", "FXB7810A", "black", 18000);
         testBikeList.add(biker);
         
         // when
@@ -74,15 +71,16 @@ public class C206_CaseStudyTest {
 
     @Test
     public void testAddGroup() {
-        BikeGroup group = new BikeGroup(1234, "groupDesc1");
+        BikeGroup group = new BikeGroup(1234, "nuggets");
         C206_CaseStudy.addGroup(testGroupList, group);
         assertEquals(1, testGroupList.size()); 
-        assertEquals("groupName1", testGroupList.get(0).getName());
+        assertEquals("nuggets", testGroupList.get(0).getName());
     }
+    
     @Test
     public void testAddDiscussion() {
         // given
-        Discussion discussion = new Discussion(1, "test", "poster1", LocalDate.now());
+        Discussion discussion = new Discussion(1, "RP", "Amy", LocalDate.now());
         testDiscussionList.add(discussion);
 
         // then
@@ -92,12 +90,10 @@ public class C206_CaseStudyTest {
     @Test
     public void testAddEvent() {
         // given
-        Event event = new Event("event1", "desc1", LocalDate.now().toString(), LocalTime.now().toString());
+        Event event = new Event("wheels", "cycling group", LocalDate.now().toString(), LocalTime.now().toString());
         testEventList.add(event);
 
         // then
-        assertEquals("event1", testEventList.get(0).getName());
+        assertEquals("wheels", testEventList.get(0).getName());
     }
-
-   
 }
