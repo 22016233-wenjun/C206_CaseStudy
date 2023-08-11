@@ -6,7 +6,7 @@
  * @author kai ling
  *
  */
-//completed///////
+//completed////
 public class Biker {
     private String model;
     private String description;

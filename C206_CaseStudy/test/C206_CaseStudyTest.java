@@ -14,16 +14,18 @@ import static org.junit.Assert.fail;
 
 public class C206_CaseStudyTest {
 
-	private Event e1;
-	private Event e2;
+	private BikeUser u1;
+	private BikeUser u2;
 	private Biker b1;
 	private Biker b2;
+	private Event e1;
+	private Event e2;
 
 
 	//ArrayList
 	private static ArrayList<Biker> testBikeList;
 	private ArrayList<Event> EventList;
-
+	private static ArrayList<BikeUser> testUserList;
 
 	public C206_CaseStudyTest() {
 		super();
@@ -33,18 +35,67 @@ public class C206_CaseStudyTest {
 	public void setUp() throws Exception {
 		// prepare test data
 
+		u1 = new BikeUser("Sally", 22 ,"sally1234@gmail.com", 12345678);
+		u2 = new BikeUser("Mark", 26, "mark1234@gmail.com", 87654321);
 		e1 = new Event("wheels", "biking group","2023-08-08","10:10");
 		e2 = new Event("Sports together", "share your bikes", "2023-10-04","10:09");
 		b1 = new Biker("FX123", "Sport mode","FDC345F","Black",1230.00);
-		b1 = new Biker("FX321", "Casual mode","FDE452E","Grey",4350.00);
+		b2 = new Biker("FX321", "Casual mode","FDE452E","Grey",4350.00);
 
-		EventList= new ArrayList<Event>();
+		testUserList = new ArrayList<BikeUser>(); 
 		testBikeList = new ArrayList<Biker>(); 
+		EventList= new ArrayList<Event>();
+	}
+
+	@Test
+	public void testAddUser() {
+		// Item list is not null and it is empty
+		assertNotNull("Test if there is valid user arraylist to add to", testUserList);
+		
+		//Given an empty list, after adding 1 item, the size of the list is 1
+		testUserList.add(u1);
+		assertEquals("Test that the user arraylist size is 1.", 1, testUserList.size());
+		assertSame("Test that the user arraylist size is 1.", u1,testUserList.get(0));
+
+		// Add an item
+		testUserList.add(u2);
+		assertEquals("Test that the user arraylist size is now 2.", 2, testUserList.size());
+		//The item just added is as same as the last item in the list
+		assertSame("Test that user is added to the end of the list.", u2, testUserList.get(1));
+	}
+
+	@Test
+	public void testViewUser() {
+		// Item list is not null and it is empty
+		testUserList.add(u1);
+		testUserList.add(u2);
+
+		assertEquals("Test that the user arraylist size is now 2.", 2, testUserList.size());
+		assertSame("Test that the user arraylist size is now 2.", 2, testUserList.size());
+
+		assertFalse("Test that it does not return 1",false);
+	}
+	
+	@Test
+	public void testDeleteUser() {
+		// Item list is not empty (2 items)
+		testUserList.add(u1);
+		testUserList.add(u2);
+
+		assertEquals("Test that the user arraylist size is now 2.", 2, testUserList.size());
+		//The item just added is as same as the last item in the list
+		assertSame("Test that user is added to the end of the list.", u2, testUserList.get(1));
+		//
+		assertNotNull("Test if there is valid user arraylist to delete to", testUserList);
+		//Given an empty list, after deleting 1 item, the size of the list is 1
+		testUserList.remove(u1);
+		assertEquals("Test that the user arraylist size is 1.", 1, testUserList.size());
+
 	}
 
 	@Test
 	public void testAddBike() {
-		// Item list is not null and it is empty
+		// Item list is not null and it is empty //
 		assertNotNull("Test if there is valid bike arraylist to add to", testBikeList);
 		//Given an empty list, after adding 1 item, the size of the list is 1
 		testBikeList.add(b1);
@@ -56,7 +107,7 @@ public class C206_CaseStudyTest {
 		assertEquals("Test that the bike arraylist size is now 2.", 2, testBikeList.size());
 		//The item just added is as same as the last item in the list
 		assertSame("Test that bike is added to the end of the list.", b2, testBikeList.get(1));
-		//
+		
 	}
 
 	@Test
@@ -72,6 +123,7 @@ public class C206_CaseStudyTest {
 		assertFalse("Test that it does not return 1",false);
 
 	}
+	
 	@Test
 	public void testDeleteBike() {
 		// Item list is not empty (2 items)
@@ -79,17 +131,18 @@ public class C206_CaseStudyTest {
 		testBikeList.add(b2);
 
 		assertEquals("Test that the bike arraylist size is now 2.", 2, testBikeList.size());
-		//The item just added is as same as the last item in the list
-		assertSame("Test that bike is added to the end of the list.", b2, testBikeList.get(1));
-		//
+		
+		
+		//Test delete existing
+	    assertSame("Test deleting an existing event", b2, testBikeList.get(1));
+	    assertEquals("Check that Event arraylist size is 2 after deletion", 2, testBikeList.size());
 		assertNotNull("Test if there is valid bike arraylist to delete to", testBikeList);
+		
 		//Given an empty list, after deleting 1 item, the size of the list is 1
 		testBikeList.remove(b1);
 		assertEquals("Test that the bike arraylist size is 1.", 1, testBikeList.size());
 
 	}
-
-
 
 	@Test
 	public void testAddEvent() {
@@ -99,13 +152,13 @@ public class C206_CaseStudyTest {
 		//The item just added is as same as the first item of the list
 		EventList.add(e1); 
 		assertEquals("Check that Event arraylist size is 1", 1, EventList.size());
-		assertSame("Check that EVent is added", e1, EventList.get(0));
+		assertSame("Check that Event is added", e1, EventList.get(0));
 
 		//Add another item. test The size of the list is 2? -normal
 		//The item just added is as same as the second item of the list
 		EventList.add(e2); 
 		assertEquals("Check that Event arraylist size is 2", 2, EventList.size());
-		assertSame("Check that Camcorder is added", e2, EventList.get(1));
+		assertSame("Check that Event is added", e2, EventList.get(1));
 
 
 	}

@@ -1,4 +1,4 @@
-//
+
 public class Registration {
   private String name;
     private String email;

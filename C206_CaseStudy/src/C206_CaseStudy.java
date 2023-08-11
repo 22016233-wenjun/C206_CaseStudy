@@ -266,7 +266,7 @@ public class C206_CaseStudy {
 		    return email.matches(regex); 
 		} 
 		 
-		// Method to check if a string is an integer 
+		// Method to check if a string is an integer //
 		public static boolean isInteger(String input) { 
 		    try { 
 		        Integer.parseInt(input); 
