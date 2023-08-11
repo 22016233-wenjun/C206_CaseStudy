@@ -9,7 +9,7 @@ public class Registration {
         this.contactNumber = contactNumber;
     }
 
-    // Getters
+    // Getters //
     public String getName() {
         return name;
     }

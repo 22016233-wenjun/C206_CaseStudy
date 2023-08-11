@@ -1,12 +1,14 @@
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-//
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 public class C206_CaseStudyTest {
 
@@ -30,10 +32,40 @@ public class C206_CaseStudyTest {
     
     @Test
     public void testAddUser() {
+    	//given
         BikeUser user = new BikeUser("Amy", 25, "amy1234@gmail.com",12345678);
         C206_CaseStudy.addUser(testUserList, user);
-        assertEquals(1, testUserList.size()); 
+        
+        //then
+        Assert.assertEquals(1, testUserList.size()); 
         assertEquals("Amy", testUserList.get(0).getName());
+    }
+    
+    @Test
+    public void testViewUser() {
+        // Given
+        BikeUser user = new BikeUser("Amy", 25, "amy1234@gmail.com", 12345678);
+        testUserList.add(user);
+
+        // When
+        String actualOutput = C206_CaseStudy.viewUser(testUserList);
+
+        // Then (No need to compare void return value, so just ensure that the method doesn't throw an exception)
+        Helper.line(75, "-");
+        assertNotNull(actualOutput);
+    }
+
+	@Test
+    public void testDeleteUser() {
+		// Given
+        BikeUser user = new BikeUser("Amy", 25, "amy1234@gmail.com", 12345678);
+        testUserList.add(user);
+
+        // When
+        C206_CaseStudy.deleteUser(testUserList);
+
+        // Then
+        assertTrue(testUserList.isEmpty());
     }
 
     @Test

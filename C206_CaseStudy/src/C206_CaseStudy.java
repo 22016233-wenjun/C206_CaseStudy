@@ -19,7 +19,7 @@ public class C206_CaseStudy {
 		ArrayList<Biker> bikeList = new ArrayList<Biker>();
 		ArrayList<BikeGroup> groupList = new ArrayList<BikeGroup>();
 		ArrayList<Event> EventList = new ArrayList<Event>();
-		ArrayList<BikeUser> bikeUserList = new ArrayList<BikeUser>();
+		ArrayList<BikeUser> UserList = new ArrayList<BikeUser>();
 		ArrayList<Discussion> discussionList = new ArrayList<Discussion>();
 		ArrayList<Registration> registrationList = new ArrayList<Registration>();
 		
@@ -45,16 +45,16 @@ public class C206_CaseStudy {
 
 				if (itemType == 1) {
 					//Add
-					C206_CaseStudy.addUser(bikeUserList, null);
+					C206_CaseStudy.addUser(UserList, null);
 					
 				} else if (itemType == 2) {
 					//View
-					C206_CaseStudy.viewUser(bikeUserList);
+					C206_CaseStudy.viewUser(UserList);
 				}
 				
 				else if (itemType == 3) {
 					//Delete
-					C206_CaseStudy.deleteUser(bikeUserList);
+					C206_CaseStudy.deleteUser(UserList);
 					
 				} else {
 					System.out.println("Invalid type");
@@ -151,9 +151,6 @@ public class C206_CaseStudy {
 				else if (itemType == 3) {
 					//View
 					C206_CaseStudy.DeleteEventList(EventList);
-
-
-
 				}
 			}
 				else if (option == option_registration) {
@@ -210,14 +207,14 @@ public class C206_CaseStudy {
 	}
 
 	//================================= Option 1  =================================
-	static void addUser(ArrayList<BikeUser> bikeUserList, BikeUser user) {
+	static void addUser(ArrayList<BikeUser> UserList, BikeUser user) {
 	    String name = getValidName(); 
 	    int age = getValidAge(); 
 	    String email = getValidEmail(); 
 	    int phoneNo = getValidPhoneNumber(); 
 	 
 	    BikeUser newUser = new BikeUser(name, age, email, phoneNo); 
-	    bikeUserList.add(newUser); 
+	    UserList.add(newUser); 
 	 
 	    System.out.println("**User has been added***\n"); 
 	 
@@ -278,15 +275,15 @@ public class C206_CaseStudy {
 		    } 
 		}
 			
-	 public static void viewUser(ArrayList<BikeUser> bikeUserList) {
+	 public static String viewUser(ArrayList<BikeUser> UserList) {
 		String output = "";
 
 		// Header
-		output += String.format("%-15s %-15s %-15s %-15s\n", "Name", "Age", "Email", "Phone Number");
+		output += String.format("%-20s %-10s %-25s %-15s\n", "Name", "Age", "Email", "Phone Number");
 
 		// Items
-		for (BikeUser bu : bikeUserList) {
-			output += String.format("%-15s %-15d %-15s %-15d\n",
+		for (BikeUser bu : UserList) {
+			output += String.format("%-20s %-10d %-25s %-15d\n",
 			          bu.getName(),
 			          bu.getAge(),
 			          bu.getEmail(),
@@ -294,29 +291,31 @@ public class C206_CaseStudy {
 		}
 
 		System.out.println(output);
+		return output;
 	}
 
-	public static void deleteUser(ArrayList<BikeUser> bikeUserList) {
-	   boolean UserFound = false;
-	   String userToDelete = Helper.readString("Enter your name > ");
+	 public static void deleteUser(ArrayList<BikeUser> UserList) {
+		    String userToDelete = Helper.readString("Enter your name > ");
+		    boolean userFound = false;
 
-	   for (int bu = 0; bu < bikeUserList.size(); bu++) {
-		   if (bikeUserList.get(bu)!= null && bikeUserList.get(bu).getName().equalsIgnoreCase(userToDelete)){
-		       char confirmDelete = Helper.readChar("Confirm deletion (y/n) > ");
-		       if (confirmDelete == 'y' || confirmDelete == 'Y') {
-		          bikeUserList.remove(bu);
-		          System.out.println("User " + userToDelete + " has been deleted!");
-		          UserFound = true;
-		       } else {
-		          System.out.println("\nUser " + userToDelete + " has not been deleted!");             
-		       }
-	   }
-	        
-		       if(!UserFound) {
-		          System.out.println("Error: User " + userToDelete + " not found!");
-		       }
-	   }
-	}
+		    for (int bu = 0; bu < UserList.size(); bu++) {
+		        if (UserList.get(bu) != null && UserList.get(bu).getName().equalsIgnoreCase(userToDelete)) {
+		            char confirmDelete = Helper.readChar("Confirm deletion (y/n) > ");
+		            if (confirmDelete == 'y' || confirmDelete == 'Y') {
+		                UserList.remove(bu);
+		                System.out.println("User " + userToDelete + " has been deleted!");
+		            } else {
+		                System.out.println("\nUser " + userToDelete + " has not been deleted!");
+		            }
+		            userFound = true;
+		            break; // Exit the loop after deleting or confirming not to delete
+		        }
+		    }
+
+		    if (!userFound) {
+		        System.out.println("Error: User " + userToDelete + " not found!");
+		    }
+		}
 
 	//================================= Option 2  =================================//
 
@@ -337,8 +336,6 @@ public class C206_CaseStudy {
 
 		return bikeList;
 	}
-
-
 
 
 	public static void viewbike(ArrayList<Biker> bikeList) {
@@ -678,20 +675,4 @@ public class C206_CaseStudy {
         Registration deletedRegistration = registrationList.remove(selectedRegistration - 1);
         System.out.println("Registration for " + deletedRegistration.getName() + " deleted successfully!");
     }
-
-
-	
-
-
-
-
-
-	
-	
 }
-
-
-
-
-
-

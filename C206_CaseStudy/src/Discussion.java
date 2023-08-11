@@ -8,7 +8,7 @@ public class Discussion {
     private LocalDate date;
     private ArrayList<String> comments;
 
-    // Constructor
+    // Constructor //
     public Discussion(int id, String title, String postedBy, LocalDate date) {
         this.id = id;
         this.title = title;
