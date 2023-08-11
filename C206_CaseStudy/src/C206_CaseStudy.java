@@ -150,7 +150,7 @@ public class C206_CaseStudy {
 				}
 				else if (itemType == 3) {
 					//View
-					C206_CaseStudy.DeleteEventList(EventList);
+					C206_CaseStudy.deleteEventList(EventList);
 				}
 			}
 				else if (option == option_registration) {
@@ -535,20 +535,21 @@ public class C206_CaseStudy {
 	
 	//================================= Option 5  =================================//
 
-	public static void  displayEventList(ArrayList<Event> EventList) {
+	public static String displayEventList(ArrayList<Event> EventList) {
 
 
 		//-------------------
 		Helper.line(75, "-");
 		String output ="";
-		output += String.format("%-10s %-25s %-15s %s\n","Event Name","Description","Date","Time");
+		output += String.format("%-15s %-25s %-15s %s\n","Event Name","Description","Date","Time");
 		for(int i = 0; i < EventList.size();i++ ) {
-			output += String.format("%-10s %-25s %-15s %s",EventList.get(i).getName(),EventList.get(i).getDescription(),EventList.get(i).getDate(),EventList.get(i).gettime());
+			output += String.format("%-15s %-25s %-15s %s\n",EventList.get(i).getName(),EventList.get(i).getDescription(),EventList.get(i).getDate(),EventList.get(i).gettime());
 
 		}
 		System.out.println(output);
-		Helper.line(75, "-");
-		//-------------------
+		
+	
+		return output;
 
 	}
 	public static void addEvent(ArrayList<Event> EventList) {
@@ -572,9 +573,9 @@ public class C206_CaseStudy {
 		//-------------------
 
 	}
-	public static boolean DeleteEventList(ArrayList<Event> EventList) {
+	public static boolean deleteEventList(ArrayList<Event> EventList) {
 
-		boolean patientfound = false;
+		boolean eventfound = false;
 
 		//-------------------
 
@@ -582,7 +583,7 @@ public class C206_CaseStudy {
 		String output ="";
 		output += String.format("%-15s %-25s %-15s %s\n","Event Name","Description","Date","Time");
 		for(int i = 0; i < EventList.size();i++ ) {
-			output += String.format("%-15s %-25s %-15s %s",EventList.get(i).getName(),EventList.get(i).getDescription(),EventList.get(i).getDate(),EventList.get(i).gettime());
+			output += String.format("%-15s %-25s %-15s %s\n",EventList.get(i).getName(),EventList.get(i).getDescription(),EventList.get(i).getDate(),EventList.get(i).gettime());
 
 		}
 		System.out.println(output);
@@ -592,7 +593,7 @@ public class C206_CaseStudy {
 		String EName = Helper.readString("Enter Event name > ");
 		for(int i = 0; i < EventList.size(); i++ ) {
 			if(EventList.get(i).getName().equalsIgnoreCase(EName)){
-				patientfound = true;
+				eventfound = true;
 				String cfm = Helper.readString("Confirm deletion (y/n) > ");
 				if(cfm.equals("y")) {
 					EventList.remove(i);
@@ -607,7 +608,7 @@ public class C206_CaseStudy {
 			}
 		}
 
-		return patientfound;
+		return eventfound;
 	}
 	
 	//================================= Option 6  =================================

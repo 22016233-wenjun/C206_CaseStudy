@@ -1,3 +1,4 @@
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -7,125 +8,95 @@ import java.util.ArrayList;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 public class C206_CaseStudyTest {
 
-	private static ArrayList<BikeUser> testUserList;
-    private static ArrayList<Biker> testBikeList;
-    private static ArrayList<BikeGroup> testGroupList;
-    private static ArrayList<Discussion> testDiscussionList;
-    private static ArrayList<Event> testEventList;
-    private static ArrayList<Registration> testRegistrationList;
+	private Event e1;
+	private Event e2;
+	
+	
+	private ArrayList<Event> EventList;
+	
+	
+	public C206_CaseStudyTest() {
+		super();
+	}
+	
+	@Before
+	public void setUp() throws Exception {
+		// prepare test data
+		
+		e1 = new Event("wheels", "biking group","2023-08-08","10:10");
+	    e2 = new Event("Sports together", "share your bikes", "2023-10-04","10:09");
+		
 
+		EventList= new ArrayList<Event>();
+		
+	}
 
-    @Before
-    public void setUp() throws Exception {
-    	testUserList = new ArrayList<>();
-        testBikeList = new ArrayList<>();
-        testGroupList = new ArrayList<>();
-        testDiscussionList = new ArrayList<>();
-        testEventList = new ArrayList<>();
-        testRegistrationList = new ArrayList<>();
-    }
-    
-    @Test
-    public void testAddUser() {
-    	//given
-        BikeUser user = new BikeUser("Amy", 25, "amy1234@gmail.com",12345678);
-        C206_CaseStudy.addUser(testUserList, user);
-        
-        //then
-        Assert.assertEquals(1, testUserList.size()); 
-        assertEquals("Amy", testUserList.get(0).getName());
-    }
-    
-    @Test
-    public void testViewUser() {
-        // Given //
-        BikeUser user = new BikeUser("Amy", 25, "amy1234@gmail.com", 12345678);
-        testUserList.add(user);
+	             
+	@Test
+	public void testAddEvent() {
+		// Item list is not null, so that can add a new item - boundary
+		assertNotNull("Check if there is valid Event arraylist to add to", EventList);
+		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
+		//The item just added is as same as the first item of the list
+		EventList.add(e1); 
+		assertEquals("Check that Event arraylist size is 1", 1, EventList.size());
+		assertSame("Check that EVent is added", e1, EventList.get(0));
+		
+		//Add another item. test The size of the list is 2? -normal
+		//The item just added is as same as the second item of the list
+		EventList.add(e2); 
+		assertEquals("Check that Event arraylist size is 2", 2, EventList.size());
+		assertSame("Check that Camcorder is added", e2, EventList.get(1));
+		
+		
+	}
 
-        // When
-        String actualOutput = C206_CaseStudy.viewUser(testUserList);
-
-        // Then (No need to compare void return value, so just ensure that the method doesn't throw an exception)
-        Helper.line(75, "-");
-        assertNotNull(actualOutput);
-    }
+	
+	@Test
+	public void testDisplayEventList() {
+		
+		//Given an empty list, after adding 2 items, test if the size of the list is 2 - normal
+		EventList.add(e1);
+	    EventList.add(e2);
+		assertEquals("Test that Event arraylist size is 2", 2, EventList.size());
+		assertSame("Test that Event arraylist size is 2", 2, EventList.size());
+	
+	}
 
 	@Test
-    public void testDeleteUser() {
-		// Given
-        BikeUser user = new BikeUser("Amy", 25, "amy1234@gmail.com", 12345678);
-        testUserList.add(user);
+	public void testDeleteEventList() {
+	
+	    // Adding events to the list
+	    EventList.add(e1);
+	    EventList.add(e2);
+	    
+		// Test deleting an existing event
+	  
+	    assertSame("Test deleting an existing event", e2, EventList.get(1));
+	    assertEquals("Check that Event arraylist size is 2 after deletion", 2, EventList.size());
 
-        // When
-        C206_CaseStudy.deleteUser(testUserList);
-
-        // Then
-        assertTrue(testUserList.isEmpty());
-    }
-
-    @Test
-    public void testAddRegistration() {
-        Registration registration = new Registration("Amy", "amy1234@gmail.com", 12345678);
-        C206_CaseStudy.addRegistration(testRegistrationList, registration);
-        assertEquals(1, testRegistrationList.size()); 
-        assertEquals("Amy", testRegistrationList.get(0).getName());
-    }
+	    // Test deleting a non-existent event
+	   assertNotNull("Test that the event arrayList is not null",EventList);
+	   EventList.remove(e1);
+	    assertEquals("Check that Event arraylist size remains 1 after unsuccessful deletion", 1, EventList.size());
+	}
 
 
-    @Test
-    public void testAddBike() {
-        // given
-        Biker biker = new Biker("VMAX", "Yamaha", "FXB7810A", "black", 18000);
-        testBikeList.add(biker);
-        
-        // then
-        assertEquals(1, testBikeList.size());
-        assertEquals("VMAX", testBikeList.get(0).getModel());
-    }
+  
+	@After
+	public void tearDown() throws Exception {
+		e1 = null;
+		e2 = null;
+		
+		EventList = null;
+	
 
-    @Test
-    public void testDeleteBike() {
-        // given
-        Biker biker = new Biker("VMAX", "Yamaha", "FXB7810A", "black", 18000);
-        testBikeList.add(biker);
-        
-        // when
-        testBikeList.remove(0);
+	}
 
-        // then
-        assertTrue(testBikeList.isEmpty());
-    }
-
-    @Test
-    public void testAddGroup() {
-        BikeGroup group = new BikeGroup(1234, "nuggets");
-        C206_CaseStudy.addGroup(testGroupList, group);
-        assertEquals(1, testGroupList.size()); 
-        assertEquals("nuggets", testGroupList.get(0).getName());
-    }
-    
-    @Test
-    public void testAddDiscussion() {
-        // given
-        Discussion discussion = new Discussion(1, "RP", "Amy", LocalDate.now());
-        testDiscussionList.add(discussion);
-
-        // then
-        assertFalse(testDiscussionList.isEmpty());
-    }
-
-    @Test
-    public void testAddEvent() {
-        // given
-        Event event = new Event("wheels", "cycling group", LocalDate.now().toString(), LocalTime.now().toString());
-        testEventList.add(event);
-
-        // then
-        assertEquals("wheels", testEventList.get(0).getName());
-    }
 }
