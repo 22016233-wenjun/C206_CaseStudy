@@ -308,7 +308,7 @@ public class C206_CaseStudy {
 		                System.out.println("\nUser " + userToDelete + " has not been deleted!");
 		            }
 		            userFound = true;
-		            break; // Exit the loop after deleting or confirming not to delete
+		            break; // Exit the loop after deleting or confirming not to delete //
 		        }
 		    }
 

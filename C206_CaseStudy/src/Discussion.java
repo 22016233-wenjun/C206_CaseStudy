@@ -17,7 +17,7 @@ public class Discussion {
         this.comments = new ArrayList<>(); // Initializing comments ArrayList
     }
 
-    // Getters and Setters
+    // Getters and Setters //
     public int getId() {
         return id;
     }

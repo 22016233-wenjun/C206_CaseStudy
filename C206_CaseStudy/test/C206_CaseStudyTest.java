@@ -43,7 +43,7 @@ public class C206_CaseStudyTest {
     
     @Test
     public void testViewUser() {
-        // Given
+        // Given //
         BikeUser user = new BikeUser("Amy", 25, "amy1234@gmail.com", 12345678);
         testUserList.add(user);
 

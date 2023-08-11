@@ -22,7 +22,7 @@ public class Registration {
         return contactNumber;
     }
 
-    // Setters
+    // Setters //
     public void setName(String name) {
         this.name = name;
     }
