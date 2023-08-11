@@ -22,7 +22,7 @@ public class C206_CaseStudyTest {
 	private Event e2;
 
 
-	//ArrayList
+	//ArrayList //
 	private static ArrayList<Biker> testBikeList;
 	private ArrayList<Event> EventList;
 	private static ArrayList<BikeUser> testUserList;
