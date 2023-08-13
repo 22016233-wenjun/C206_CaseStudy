@@ -22,6 +22,8 @@ public class C206_CaseStudyTest {
 	private BikeGroup g2;
 	private Event e1;
 	private Event e2;
+	private Registration rg1;
+	private Registration rg2;
 
 
 	//ArrayList 
@@ -29,6 +31,7 @@ public class C206_CaseStudyTest {
 	private static ArrayList<BikeUser> testUserList;
 	private static ArrayList<BikeGroup> testGroupList;
 	private ArrayList<Event> EventList;
+	private static ArrayList<Registration> registrationList;
 
 	public C206_CaseStudyTest() {
 		super();
@@ -46,11 +49,14 @@ public class C206_CaseStudyTest {
 		g2 = new BikeGroup(2, "mark");
 		e1 = new Event("wheels", "biking group","2023-08-08","10:10");
 		e2 = new Event("Sports together", "share your bikes", "2023-10-04","10:09");
+		rg1 = new Registration("Jennie", "jenniekim@gmail.com", 98765432);
+	    rg2 = new Registration("Lisa", "lisatan@gmail.com", 87654321);
 
 		testUserList = new ArrayList<BikeUser>(); 
 		testBikeList = new ArrayList<Biker>(); 
 		testGroupList = new ArrayList<BikeGroup>();
 		EventList= new ArrayList<Event>();
+		registrationList = new ArrayList<Registration>();
 	}
 
 	@Test
@@ -245,17 +251,73 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that Event arraylist size remains 1 after unsuccessful deletion", 1, EventList.size());
 	}
 
+	@Test
+	  public void testAddRegistration() {
+	    // Item list is not null and it is empty
+	    assertNotNull("Test if there is valid registration arraylist to add to", registrationList);
+	    //Given an empty list, after adding 1 item, the size of the list is 1
+	    registrationList.add(rg1);
+	    assertEquals("Test that the registration arraylist size is 1.", 1, registrationList.size());
+	    assertSame("Test that the registration arraylist size is 1.", rg1,registrationList.get(0));
 
+	    // Add an item
+	    registrationList.add(rg2);
+	    assertEquals("Test that the registration arraylist size is now 2.", 2, registrationList.size());
+	    //The item just added is as same as the last item in the list
+	    assertSame("Test that registration is added to the end of the list.", rg2, registrationList.get(1));
+	    //
+	  }
+	  
+	  @Test
+	  public void testViewRegistration() {
+	    // Item list is not null and it is empty
+	    registrationList.add(rg1);
+	    registrationList.add(rg2);
+
+	    assertEquals("Test that the registration arraylist size is now 2.", 2, registrationList.size());
+	    assertSame("Test that the registration arraylist size is now 2.", 2, registrationList.size());
+
+	    //
+	    assertFalse("Test that it does not return 1",false);
+
+	  }
+	  
+	  @Test
+	  public void testDeleteRegistration() {
+
+	    // Adding events to the list
+	    registrationList.add(rg1);
+	    registrationList.add(rg2);
+
+	    // Test deleting an existing event
+
+	    assertSame("Test deleting an existing event", rg2, registrationList.get(1));
+	    assertEquals("Check that registration arraylist size is 2 after deletion", 2, registrationList.size());
+
+	    // Test deleting a non-existent event
+	    assertNotNull("Test that the registration arrayList is not null",registrationList);
+	    registrationList.remove(rg1);
+	    assertEquals("Check that registration arraylist size remains 1 after unsuccessful deletion", 1, registrationList.size());
+	  }
 
 	@After
 	public void tearDown() throws Exception {
-		e1 = null;
-		e2 = null;
+		u1 = null;
+		u2 = null;
 		b1 = null;
 		b2 = null;
-
-		EventList = null;
+		g1 = null;
+		g2 = null;
+		e1 = null;
+		e2 = null;
+		rg1 = null;
+		rg2 = null;
+		
+		testUserList = null;
 		testBikeList = null;
+		testGroupList = null;
+		EventList = null;
+		registrationList = null;
 
 
 	}
