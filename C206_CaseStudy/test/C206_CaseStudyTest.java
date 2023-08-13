@@ -18,14 +18,17 @@ public class C206_CaseStudyTest {
 	private BikeUser u2;
 	private Biker b1;
 	private Biker b2;
+	private BikeGroup g1;
+	private BikeGroup g2;
 	private Event e1;
 	private Event e2;
 
 
 	//ArrayList 
 	private static ArrayList<Biker> testBikeList;
-	private ArrayList<Event> EventList;
 	private static ArrayList<BikeUser> testUserList;
+	private static ArrayList<BikeGroup> testGroupList;
+	private ArrayList<Event> EventList;
 
 	public C206_CaseStudyTest() {
 		super();
@@ -37,13 +40,16 @@ public class C206_CaseStudyTest {
 
 		u1 = new BikeUser("Sally", 22 ,"sally1234@gmail.com", 12345678);
 		u2 = new BikeUser("Mark", 26, "mark1234@gmail.com", 87654321);
-		e1 = new Event("wheels", "biking group","2023-08-08","10:10");
-		e2 = new Event("Sports together", "share your bikes", "2023-10-04","10:09");
 		b1 = new Biker("FX123", "Sport mode","FDC345F","Black",1230.00);
 		b2 = new Biker("FX321", "Casual mode","FDE452E","Grey",4350.00);
+		g1 = new BikeGroup(1, "sally");
+		g2 = new BikeGroup(2, "mark");
+		e1 = new Event("wheels", "biking group","2023-08-08","10:10");
+		e2 = new Event("Sports together", "share your bikes", "2023-10-04","10:09");
 
 		testUserList = new ArrayList<BikeUser>(); 
 		testBikeList = new ArrayList<Biker>(); 
+		testGroupList = new ArrayList<BikeGroup>();
 		EventList= new ArrayList<Event>();
 	}
 
@@ -143,7 +149,53 @@ public class C206_CaseStudyTest {
 		assertEquals("Test that the bike arraylist size is 1.", 1, testBikeList.size());
 
 	}
+	
+	@Test
+	public void testAddGroup() {
+		// Item list is not null and it is empty
+		assertNotNull("Test if there is valid group arraylist to add to", testGroupList);
+		
+		//Given an empty list, after adding 1 item, the size of the list is 1
+		testGroupList.add(g1);
+		assertEquals("Test that the group arraylist size is 1.", 1, testGroupList.size());
+		assertSame("Test that the group arraylist size is 1.", g1,testGroupList.get(0));
 
+		// Add an item
+		testGroupList.add(g2);
+		assertEquals("Test that the group arraylist size is now 2.", 2, testGroupList.size());
+		//The item just added is as same as the last item in the list
+		assertSame("Test that group is added to the end of the list.", g2, testGroupList.get(1));
+	}
+
+	@Test
+	public void testViewGroup() {
+		// Item list is not null and it is empty
+		testGroupList.add(g1);
+		testGroupList.add(g2);
+
+		assertEquals("Test that the group arraylist size is now 2.", 2, testGroupList.size());
+		assertSame("Test that the group arraylist size is now 2.", 2, testGroupList.size());
+
+		assertFalse("Test that it does not return 1",false);
+	}
+	
+	@Test
+	public void testDeleteGroup() {
+		// Item list is not empty (2 items)
+		testGroupList.add(g1);
+		testGroupList.add(g2);
+
+		assertEquals("Test that the group arraylist size is now 2.", 2, testGroupList.size());
+		//The item just added is as same as the last item in the list
+		assertSame("Test that group is added to the end of the list.", g2, testGroupList.get(1));
+		//
+		assertNotNull("Test if there is valid group arraylist to delete to", testGroupList);
+		//Given an empty list, after deleting 1 item, the size of the list is 1
+		testGroupList.remove(g1);
+		assertEquals("Test that the group arraylist size is 1.", 1, testGroupList.size());
+
+	}
+	
 	@Test
 	public void testAddEvent() {
 		// Item list is not null, so that can add a new item - boundary
