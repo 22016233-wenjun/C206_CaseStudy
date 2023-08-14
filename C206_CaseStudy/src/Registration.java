@@ -32,5 +32,4 @@ public class Registration {
     public void setContactNumber(int contactNumber) {
         this.contactNumber = contactNumber;
     }
-    
 }

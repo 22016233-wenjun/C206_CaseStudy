@@ -97,7 +97,6 @@ public class Helper {
     }
     return false;
   }
-
   
   public static Date readDate(String prompt) {
     java.util.Date date = null;
