@@ -1,4 +1,3 @@
-
 public class Registration {
   private String name;
     private String email;
@@ -10,7 +9,6 @@ public class Registration {
         this.contactNumber = contactNumber;
     }
 
-    // Getters //
     public String getName() {
         return name;
     }
@@ -23,7 +21,6 @@ public class Registration {
         return contactNumber;
     }
 
-    // Setters ////
     public void setName(String name) {
         this.name = name;
     }

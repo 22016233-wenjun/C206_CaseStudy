@@ -1,12 +1,3 @@
-/**
- * 
- */
-
-/**
- * @author kai ling
- *
- */
-//completed//
 public class Biker {
     private String model;
     private String description;
@@ -58,6 +49,6 @@ public class Biker {
     	this.price = price;
     }
 
-}//
+}
 
 

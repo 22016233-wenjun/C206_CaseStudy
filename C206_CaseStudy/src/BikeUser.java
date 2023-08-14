@@ -1,12 +1,3 @@
-/**
- * 
- */
-
-/**
- * @author kai xin 
- *
- */
-///
 public class BikeUser {
 	private String name;
     private int age;

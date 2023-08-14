@@ -1,4 +1,3 @@
-////
 import java.util.*;
 
 public class Helper {
@@ -242,4 +241,3 @@ public class Helper {
         && getYear(one) == getYear(two);
   }
 }
-////

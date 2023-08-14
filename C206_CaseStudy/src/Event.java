@@ -1,7 +1,3 @@
-/**
- * @author cao yue 
- *
- *////
 public class Event {
     private String Name;
     private String description;

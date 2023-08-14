@@ -9,16 +9,14 @@ public class Discussion {
     private LocalDate date;
     private ArrayList<String> comments;
 
-    // Constructor //
     public Discussion(int id, String title, String postedBy, LocalDate date) {
         this.id = id;
         this.title = title;
         this.postedBy = postedBy;
         this.date = date;
-        this.comments = new ArrayList<>(); // Initializing comments ArrayList
+        this.comments = new ArrayList<>(); 
     }
 
-    // Getters and Setters //
     public int getId() {
         return id;
     }
