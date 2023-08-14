@@ -28,7 +28,6 @@ public class C206_CaseStudyTest {
 	private Discussion ds2;
 
 
-	//ArrayList 
 	private static ArrayList<Biker> testBikeList;
 	private static ArrayList<BikeUser> testUserList;
 	private static ArrayList<BikeGroup> testGroupList;
