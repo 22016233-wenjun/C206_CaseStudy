@@ -39,6 +39,7 @@ public class Event {
     public void settime(String time) {
     	this.time = time;
     }
+    
 }
 
 

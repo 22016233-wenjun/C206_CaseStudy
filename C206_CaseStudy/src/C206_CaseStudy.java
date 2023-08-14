@@ -207,6 +207,7 @@ public class C206_CaseStudy {
 
 	}
 
+	
 	//================================= Option 1  =================================
 	static void addUser(ArrayList<BikeUser> UserList, BikeUser user) {
 	    String name = getValidName(); 
