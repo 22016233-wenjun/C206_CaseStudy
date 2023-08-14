@@ -325,12 +325,15 @@ public class C206_CaseStudyTest {
 		e2 = null;
 		rg1 = null;
 		rg2 = null;
+		ds1 = null;
+		ds2 = null;
 		
 		testUserList = null;
 		testBikeList = null;
 		testGroupList = null;
 		EventList = null;
 		registrationList = null;
+		discussionList = null;
 
 
 	}
