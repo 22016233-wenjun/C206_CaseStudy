@@ -22,6 +22,7 @@ public class Helper {
     return input;
   }
 
+  
   public static double readDouble(String prompt) {
     double input = 0;
     boolean valid = false;

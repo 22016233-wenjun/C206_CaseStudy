@@ -43,4 +43,3 @@ public class BikeUser {
 		this.phoneNo = phoneNo;
 	}
 }
-

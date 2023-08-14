@@ -22,5 +22,4 @@ public class BikeGroup {
     public void setName(String name) {
         this.name = name;
     }
-
 }

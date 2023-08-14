@@ -260,13 +260,11 @@ public class C206_CaseStudy {
 		    } 
 		} 
 		 
-		// Method to validate email format 
 		public static boolean isValidEmail(String email) { 
 		    String regex = "^[A-Za-z0-9+_.-]+@(.+)$"; 
 		    return email.matches(regex); 
 		} 
 		 
-		// Method to check if a string is an integer //
 		public static boolean isInteger(String input) { 
 		    try { 
 		        Integer.parseInt(input); 
@@ -279,10 +277,8 @@ public class C206_CaseStudy {
 	 public static String viewUser(ArrayList<BikeUser> UserList) {
 		String output = "";
 
-		// Header
 		output += String.format("%-20s %-10s %-25s %-15s\n", "Name", "Age", "Email", "Phone Number");
 
-		// Items
 		for (BikeUser bu : UserList) {
 			output += String.format("%-20s %-10d %-25s %-15d\n",
 			          bu.getName(),
@@ -309,7 +305,7 @@ public class C206_CaseStudy {
 		                System.out.println("\nUser " + userToDelete + " has not been deleted!");
 		            }
 		            userFound = true;
-		            break; // Exit the loop after deleting or confirming not to delete //
+		            break; 
 		        }
 		    }
 
@@ -322,7 +318,6 @@ public class C206_CaseStudy {
 
 	public static ArrayList<Biker> addbike(ArrayList<Biker> bikeList) {
 
-		//asking the questions of the bike
 		String model = Helper.readString("Enter bike model>");
 		String description= Helper.readString("Enter description >");
 		String licenseno = Helper.readString("Enter license number >");
@@ -341,12 +336,10 @@ public class C206_CaseStudy {
 
 	public static void viewbike(ArrayList<Biker> bikeList) {
 
-		//Header
 		Helper.line(75,"=");
 		System.out.println(String.format("%-10s %-30s %-15s %s","Model","Description","Color","Price"));
 		Helper.line(75,"=");
 
-		//information and amount
 		for (int i = 0; i< bikeList.size(); i++ ) {
 			System.out.println(String.format("%-10s %-30s %-15s $%.2f",bikeList.get(i).getModel(),bikeList.get(i).getDescription(),bikeList.get(i).getColor(),bikeList.get(i).getPrice()));		
 
@@ -356,7 +349,6 @@ public class C206_CaseStudy {
 	public static boolean deletebike(ArrayList<Biker> bikeList) {
 		boolean bikeFound = false;
 
-		// Display the list of bikes
 		System.out.println("List of Bikes:");
 		System.out.println(String.format("%-10s %-30s %-15s %-15s %s","Model","Description","License No.","Color","Price"));
 		Helper.line(75,"=");
@@ -409,12 +401,11 @@ public class C206_CaseStudy {
 	
 	public static void viewgroup(ArrayList<BikeGroup> groupList) {
 
-		//Title
+		
 		Helper.line(75,"=");
 		System.out.println(String.format("%-10s %-30s","ID","GROUP NAME"));
 		Helper.line(75,"=");
 
-		//list details
 		for (int i = 0; i< groupList.size(); i++ ) {
 			System.out.println(String.format("%-10d %-30s", groupList.get(i).getId(), groupList.get(i).getName()));		
 
@@ -474,7 +465,6 @@ public class C206_CaseStudy {
 	    Helper.line(75, "-");
 	}
 
-	// Add a new discussion
 	public static void addDiscussion(ArrayList<Discussion> discussionList) {
 	    int id = Helper.readInt("Enter discussion ID > ");
 	    String title = Helper.readString("Enter discussion title > ");
@@ -487,7 +477,6 @@ public class C206_CaseStudy {
 	    System.out.println("\n*** New Discussion Added ***");
 	}
 
-	// Delete a discussion
 	public static boolean deleteDiscussion(ArrayList<Discussion> discussionList) {
 	    boolean discussionFound = false;
 
@@ -617,12 +606,10 @@ public class C206_CaseStudy {
 	static void addRegistration(ArrayList<Registration> registrationList, Registration registration) {
         System.out.println("ADD REGISTRATION");
 
-        // Get user input
         String name = Helper.readString("Enter participant's name: ");
         String email = Helper.readString("Enter participant's email: ");
         int contactNumber = Helper.readInt("Enter participant's contact number: ");
 
-        // Create and add the registration to the list
         Registration newRegistration = new Registration(name, email, contactNumber);
         registrationList.add(newRegistration);
 
@@ -632,13 +619,11 @@ public class C206_CaseStudy {
     public static void viewAllRegistrations(ArrayList<Registration> registrationList) {
         System.out.println("VIEW ALL REGISTRATIONS");
 
-        // Check if there are any registrations in the list
         if (registrationList.isEmpty()) {
             System.out.println("No registrations found.");
             return;
         }
 
-        // Display all registrations
         for (Registration registration : registrationList) {
             System.out.println("Name: " + registration.getName());
             System.out.println("Email: " + registration.getEmail());
@@ -649,14 +634,12 @@ public class C206_CaseStudy {
 
     public static void deleteRegistration(ArrayList<Registration> registrationList) {
         System.out.println("DELETE REGISTRATION");
-//
-        // Check if there are any registrations in the list
+
         if (registrationList.isEmpty()) {
             System.out.println("No registrations found.");
             return;
         }
 
-        // Display all registrations with index for user selection
         for (int i = 0; i < registrationList.size(); i++) {
             System.out.println((i + 1) + ". Name: " + registrationList.get(i).getName());
             System.out.println("   Email: " + registrationList.get(i).getEmail());
@@ -664,16 +647,13 @@ public class C206_CaseStudy {
             System.out.println("---------------------------");
         }
 
-        // Get user input for the registration to delete
         int selectedRegistration = Helper.readInt("Enter the number of the registration to delete: ");
 
-        // Check if the selected registration is valid
         if (selectedRegistration < 1 || selectedRegistration > registrationList.size()) {
             System.out.println("Invalid selection.");
             return;
         }
 
-        // Delete the selected registration
         Registration deletedRegistration = registrationList.remove(selectedRegistration - 1);
         System.out.println("Registration for " + deletedRegistration.getName() + " deleted successfully!");
     }
